@@ -108,3 +108,17 @@ Após a autenticação, faça uma requisição GET para http://localhost:5000/pr
 Adicione o token JWT nos cookies ou nos cabeçalhos da requisição para acessar os dados de produtos.
 Contribuindo
 Contribuições são bem-vindas! Se você tiver sugestões ou melhorias, sinta-se à vontade para abrir um issue ou enviar um pull request.
+
+## Explicacao
+
+Este código é um microsserviço em Python utilizando Flask que gerencia um catálogo de produtos. Ele possui as seguintes funcionalidades principais:
+
+1. Autenticação de Usuário (POST /auth): A rota /auth recebe as credenciais de um usuário no corpo da requisição e verifica se essas credenciais correspondem aos dados de um arquivo JSON de usuários. Se as credenciais forem válidas, um token JWT é gerado e enviado ao cliente como um cookie. Esse token será usado para autenticar futuras requisições.
+
+2. Proteção de Rota com JWT (GET /products): A rota /products é protegida por um decorador que exige um token JWT válido para acessar os dados. O token é extraído do cookie da requisição, decodificado e validado. Se o token for válido, o microsserviço consulta uma API externa de produtos, obtendo informações sobre o catálogo, que são então formatadas e retornadas em formato JSON. Se o token for inválido ou ausente, a requisição é rejeitada com um erro de autorização.
+
+3. Integração com API Externa: O microsserviço busca dados de produtos da API pública https://dummyjson.com/products utilizando o módulo requests. Ele faz isso dentro da rota /products, recuperando as informações dos produtos como nome, descrição, preço, marca, etc.
+
+4. Contêinerização: O microsserviço está preparado para ser executado dentro de um contêiner Docker. Um Dockerfile é fornecido para criar a imagem Docker, instalar dependências do projeto e expor a aplicação na porta 5000. Isso permite que o microsserviço seja facilmente implantado em qualquer ambiente com Docker.
+
+Em resumo, este microsserviço proporciona a autenticação de usuários, valida o acesso com JWT, busca dados de produtos de uma API externa e permite a execução e distribuição do aplicativo em contêineres Docker.
