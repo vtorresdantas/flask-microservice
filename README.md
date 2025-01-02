@@ -1,5 +1,9 @@
 # Microsserviço de Catálogo de Produtos com Python
 
+## Referencia de Como Criar e Implantar Microsserviços com Python
+
+https://kinsta.com/pt/blog/microsservicos-python/
+
 Este projeto demonstra como criar e implantar microsserviços com Python, usando o framework Flask para desenvolver um microsserviço que gerencia um catálogo de produtos. O microsserviço busca dados de produtos de uma fonte externa e retorna as informações no formato JSON, permitindo integração com outros componentes do sistema de eCommerce.
 
 ## O que são Microsserviços?
